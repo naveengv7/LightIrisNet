@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+data/
+runs/
+outputs/
+logs/
+tensorboard/
+*.log
+checkpoints/
+*.pt
+*.pth
+.DS_Store
+.vscode/
