@@ -20,18 +20,18 @@ pip install -r requirements.txt
 ```
 
 ### 2) Prepare data
-Expected layout (customize with flags if your layout differs):
+Expected layout (using a single root at `.\data`):
 ```
-data/
-├─ images/               # input images (used at test-time; train may read via dataset class)
-├─ labels_iris/          # iris masks (optional at test-time)
-├─ labels_pupil/         # pupil masks (optional at test-time)
-├─ train.txt             # list of IDs used for training
-├─ val.txt               # list of IDs used for validation
-└─ test.txt              # list of IDs used for testing
+.\data\
+├─ images\               # input images (used at test-time; train may read via dataset class)
+├─ labels_iris\          # iris masks (optional at test-time)
+├─ labels_pupil\         # pupil masks (optional at test-time)
+├─ train.txt              # list of IDs used for training
+├─ val.txt                # list of IDs used for validation
+└─ test.txt               # list of IDs used for testing
 ```
 - Text files contain **one ID per line** (without extension).  
-- Paths are relative to `--root` (default is `.\data`).
+- All paths below assume `--root .\data`.
 
 ### 3) Train (uses your defaults)
 ```bash
@@ -74,11 +74,11 @@ Defaults (override any of these on the command line):
 ```bash
 python -m scripts.test
 ```
-Key defaults:
+Key defaults (updated to your checkpoint path):
 ```
 --root .\data
 --test_split .\data\test.txt
---checkpoint runs\train\best_mobilenetv3.pt
+--checkpoint .\model\best_mobilenetv3.pt
 --backbone mobilenetv3
 --use_ellipse
 --extra_decoder_conv
@@ -102,19 +102,14 @@ Other relevant defaults already present in the code:
 
 ## Override examples
 
-- Change dataset location:
-```bash
-python -m scripts.train --root D:\datasets\iris --train_split D:\datasets\iris\splits\train.txt --val_split D:\datasets\iris\splits\val.txt
-```
-
 - Switch backbone and turn off paper augmentations:
 ```bash
-python -m scripts.train --backbone mobilenetv3
+python -m scripts.train --backbone resnet50 --paper_aug False
 ```
 
 - Test with a different checkpoint and output directory:
 ```bash
-python -m scripts.test --checkpoint runs\train\best_mobilenetv3.pt --export_dir runs\preds_mobilenetv3
+python -m scripts.test --checkpoint .\model\best_resnet50.pt --export_dir runs\preds_resnet50
 ```
 
 - Run with explicit image directory at test-time (if not `images/`):
@@ -161,7 +156,8 @@ python -m scripts.test --images_dir eval_images
 
 ## Checkpoints & large files
 
-- Checkpoints are saved under `runs/` (default `runs\train`).  
+- Default training outputs go under `runs\` (e.g., `runs\train`).  
+- Your best MobileNetV3 model is referenced at `.\model\best_mobilenetv3.pt` in the testing defaults.  
 - If you push to GitHub, either:
   - **Don’t commit weights**: keep `*.pt` ignored (recommended), or
   - **Use Git LFS** to version `*.pt`/`*.pth`.
