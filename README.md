@@ -1,4 +1,4 @@
-# Iris Segmentation (DeepLabv3+ style)
+# Iris Segmentation (LightIrisNet)
 
 A tidy project structure for training and testing an iris+pupil segmentation model.  
 This repo includes thin entrypoints (`scripts/train.py`, `scripts/test.py`) and a package (`src/irisseg/`).  
