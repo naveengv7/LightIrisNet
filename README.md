@@ -109,12 +109,12 @@ python -m scripts.train --root D:\datasets\iris --train_split D:\datasets\iris\s
 
 - Switch backbone and turn off paper augmentations:
 ```bash
-python -m scripts.train --backbone resnet50 --paper_aug False
+python -m scripts.train --backbone mobilenetv3
 ```
 
 - Test with a different checkpoint and output directory:
 ```bash
-python -m scripts.test --checkpoint runs\train\best_resnet50.pt --export_dir runs\preds_resnet50
+python -m scripts.test --checkpoint runs\train\best_mobilenetv3.pt --export_dir runs\preds_mobilenetv3
 ```
 
 - Run with explicit image directory at test-time (if not `images/`):
