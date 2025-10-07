@@ -1,6 +1,7 @@
 # Iris Segmentation (LightIrisNet)
 
-A tidy project structure for training and testing an iris+pupil segmentation model.  
+LightIrisNet is a lightweight, multi-task iris segmentation framework built for accurate and efficient iris + pupil localization in visible-light (VIS) images. It integrates a MobileNetV3-Large encoder within a DeepLabv3+-style architecture and introduces structured multi-task supervision to achieve robustness comparable to heavy backbones (VGG, ResNet) at a fraction of the computational cost.
+ 
 This repo includes thin entrypoints (`scripts/train.py`, `scripts/test.py`) and a package (`src/irisseg/`).  
 Your commonly used **training** and **testing** flags are baked in as **defaults**, so you can run with no arguments.
 
