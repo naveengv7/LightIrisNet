@@ -186,4 +186,4 @@ python -c "import irisseg; print('ok')"
 ---
 
 ## License
-Add a license file (MIT/Apache-2.0) if you plan to share publicly.
+MIT
